@@ -93,7 +93,7 @@ def create_buys_simulator_table(symbol, interval, money):
     c = conn.cursor()
     try:
         c.execute(f'''CREATE TABLE {symbol}_{interval}_{money}_simulation(
-        Buys number, Bought coins, Money spend, Current coin price, Fortune, Profit
+        Buys number, Bought coins, Money spend, Current coin price, Fortune, Profit, Rate of return 
         )''')
         conn.commit()
     except OperationalError:

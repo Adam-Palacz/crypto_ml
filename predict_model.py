@@ -54,14 +54,14 @@ def mean_model_prepare(symbol, interval):
     mean_predict = mean_predict.iloc[:, 0:4].copy()
     mean_predict['mean'] = 0
     for i in range(len(mean_predict)):
-        mean_predict['mean'].iloc[i] = mean_predict.iloc[i, :4].mean().copy()
-    mean_predict['next_day_close_price'] = mean_predict['mean'].shift(-1)
-    mean_predict = mean_predict.dropna()
+        mean_predict['mean'].iloc[i] = mean_predict.iloc[i, :4].mean()
     return mean_predict
 
 
 def mean_model_train(symbol, interval):
     mean_predict = mean_model_prepare(symbol, interval)
+    mean_predict['next_day_close_price'] = mean_predict['mean'].shift(-1)
+    mean_predict = mean_predict.dropna()
     X = mean_predict[['Open', 'High', 'Low', 'Close']]
     y = mean_predict['next_day_close_price']
     split = split_data(mean_predict)
@@ -74,7 +74,6 @@ def mean_model_train(symbol, interval):
 def mean_model_predict(symbol, interval):
     mean_predict = mean_model_prepare(symbol, interval)
     model = mean_model_train(symbol, interval)
-    mean_predict = mean_predict.drop('next_day_close_price', axis=1)
     mean_predict['predicted_price'] = model.predict(mean_predict[['Open', 'High', 'Low', 'Close']])
     return mean_predict
 

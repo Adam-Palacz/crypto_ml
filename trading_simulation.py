@@ -1,6 +1,7 @@
 from predict_model import trade_move, mean_model_predict
 import pandas as pd
 
+
 def only_buys_simulator(symbol, interval, money):
     trade = trade_move(mean_model_predict, symbol, interval)
     money = int(money)
@@ -15,6 +16,7 @@ def only_buys_simulator(symbol, interval, money):
     coin_price = trade['mean'].iloc[-1]
     fortune = (bought_coins * coin_price).round(2)
     profit = (fortune - money_spend).round(2)
+    rate_of_return = ((profit / money_spend) * 100).round(2)
     buys_simulator_df = pd.DataFrame(data={
         'Buys number': buys,
         'Bought coins': bought_coins,
@@ -22,6 +24,7 @@ def only_buys_simulator(symbol, interval, money):
         'Current coin price': coin_price,
         'Fortune': fortune,
         'Profit': profit,
+        'Rate of return': rate_of_return,
     }, index=[0])
     return buys_simulator_df
 
@@ -44,6 +47,7 @@ def buys_sales_simulator(symbol, interval, money_buys, money_sales):
     coin_price = trade['mean'].iloc[-1]
     fortune = (bought_coins * coin_price).round(2)
     profit = (fortune - money_spend).round(2)
+    rate_of_return = ((profit / money_spend) * 100).round(2)
     buys_sales_simulator_df = pd.DataFrame(data={
         'Buys number': buys,
         'Sales number': sales,
@@ -52,6 +56,7 @@ def buys_sales_simulator(symbol, interval, money_buys, money_sales):
         'Current coin price': coin_price,
         'Fortune': fortune,
         'Profit': profit,
+        'Rate of return': rate_of_return,
     }, index=[0])
     return buys_sales_simulator_df
 
