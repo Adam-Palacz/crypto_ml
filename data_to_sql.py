@@ -73,7 +73,7 @@ def create_predict_table(symbol, interval):
 
 
 def save_predict_prices(symbol, interval):
-    predict = trade_move(mean_model_predict ,symbol, interval)
+    predict = trade_move(mean_model_predict, symbol, interval).tail(1)
     conn = sqlite3.connect('db.sqlite')
     result = predict.to_sql(f'{symbol}_{interval}_predict_model', conn, if_exists='replace', index=False)
     return result
@@ -86,5 +86,6 @@ def print_predict_prices(symbol, interval):
     c.execute(f'''
     SELECT * FROM {symbol}_{interval}_predict_model''')
     return c.fetchall()
+
 
 # print(print_predict_prices('BTCUSDT', '1d'))
