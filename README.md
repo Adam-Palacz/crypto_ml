@@ -17,6 +17,7 @@ interval - time interval beetween prices (string) :
  * days -> 1d, 3d
  * weeks -> 1w
  * months -> 1M
+
 money - buy value for trading simulation (float)
 
 ### Show all cryptocurrency pairs
