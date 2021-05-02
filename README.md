@@ -1,9 +1,8 @@
 # crypto_ml 
-Application using machine learning to predict cryptocurrency prices.\
-App is connecting to Binance Exchange API, download data and saving them to database.\
-The data is prepared for linear regression model to predict prices.\
-Access to application function is allowed by api provided by Flask.\
-Research for this application is presented in Jupyter-Nootebook file crypto_ml.ipynb\
+Application using machine learning to predict cryptocurrency prices from Binance Exchange API.\
+Access to application function is allowed by API provided by Flask.\
+App also allow to simulate trading based on predicted moves.\
+Research for this application is presented in Jupyter-Nootebook file crypto_ml.ipynb
 
 # API 
 App is using Binance Exchange API. All functions are availbe on https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md, but in this application we use only two
