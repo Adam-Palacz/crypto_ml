@@ -7,8 +7,8 @@ Researh for this application is presented in Jupyter-Nootebook file crypto_ml.ip
 
 # API 
 
-Show all cryptocurrency pairs
-''' 
+### Show all cryptocurrency pairs
+```
 localhost:5000/crypto/ 
 0	
   0	"ETHBTC" # price
@@ -17,10 +17,10 @@ localhost:5000/crypto/
   0	"LTCBTC"
   1	0.004742
 ...
-'''
+```
 
-Show 1000 records for selected cryptocurrency and time interval
-''' 
+### Show 1000 records for selected cryptocurrency and time interval
+```
 localhost:5000/crypto/<symbol>/<interval>/ # localhost:5000/crypto/BTCUSDT/1d/ 
 0	
   0	6935 # Open 
@@ -35,4 +35,4 @@ localhost:5000/crypto/<symbol>/<interval>/ # localhost:5000/crypto/BTCUSDT/1d/
   3	6285
   4	59550.536319
 ...
-'''
+```
