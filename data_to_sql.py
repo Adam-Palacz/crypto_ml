@@ -92,7 +92,7 @@ def create_buys_simulator_table(symbol, interval, money):
     conn = sqlite3.connect('db.sqlite')
     c = conn.cursor()
     try:
-        c.execute(f'''CREATE TABLE {symbol}_{interval}_{money}_simulation(
+        c.execute(f'''CREATE TABLE {symbol}_{interval}_{int(money)}_simulation(
         Buys number, Bought coins, Money spend, Current coin price, Fortune, Profit, Rate of return 
         )''')
         conn.commit()
@@ -104,7 +104,7 @@ def save_buys_simulator(symbol, interval, money):
     create_buys_simulator_table(symbol, interval, money)
     simulator = only_buys_simulator(symbol, interval, money)
     conn = sqlite3.connect('db.sqlite')
-    result = simulator.to_sql(f'{symbol}_{interval}_{money}_simulation', conn, if_exists='replace', index=[0])
+    result = simulator.to_sql(f'{symbol}_{interval}_{int(money)}_simulation', conn, if_exists='replace', index=[0])
     return result
 
 
@@ -113,8 +113,7 @@ def print_buys_simulator(symbol, interval, money):
     conn = sqlite3.connect('db.sqlite')
     c = conn.cursor()
     c.execute(f'''
-    SELECT * FROM {symbol}_{interval}_{money}_simulation''')
+    SELECT * FROM {symbol}_{interval}_{int(money)}_simulation
+    ''')
     return c.fetchall()
 
-
-# print(print_buys_simulator('BTCUSDT', '1h', 100))

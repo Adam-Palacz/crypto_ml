@@ -4,7 +4,7 @@ import pandas as pd
 
 def only_buys_simulator(symbol, interval, money):
     trade = trade_move(mean_model_predict, symbol, interval)
-    money = int(money)
+    money = float(money)
     money_spend = 0
     buys = 0
     bought_coins = 0
@@ -31,6 +31,8 @@ def only_buys_simulator(symbol, interval, money):
 
 def buys_sales_simulator(symbol, interval, money_buys, money_sales):
     trade = trade_move(mean_model_predict, symbol, interval)
+    money_buys = float(money_buys)
+    money_sales = float(money_sales)
     money_spend = 0
     buys = 0
     bought_coins = 0
@@ -60,6 +62,3 @@ def buys_sales_simulator(symbol, interval, money_buys, money_sales):
     }, index=[0])
     return buys_sales_simulator_df
 
-
-
-# print(buys_sales_simulator('BTCUSDT', '1d', 100, 50))
