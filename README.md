@@ -1,7 +1,8 @@
 # crypto_ml 
 Application using machine learning to predict cryptocurrency prices from Binance Exchange API.\
-Access to application function is allowed by API provided by Flask.\
 App also allow to simulate trading based on predicted moves.\
+Application functions are made available in API form using the Flask library\
+
 Research for this application is presented in Jupyter-Nootebook file crypto_ml.ipynb
 
 # API 
