@@ -19,7 +19,7 @@ def get_predict_price(symbol, interval):
     return jsonify(print_predict_prices(symbol, interval))
 
 
-@app.route('/crypto/<symbol>/<interval>/<int:money>/simulation/', methods=['GET'])
+@app.route('/crypto/<symbol>/<interval>/<float:money>/simulation/', methods=['GET'])
 def get_buys_simulation(symbol, interval, money):
     return jsonify(print_buys_simulator(symbol, interval, money))
 
