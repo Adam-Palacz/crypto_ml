@@ -34,7 +34,7 @@ localhost:5000/crypto/
 
 ### Show 1000 records for selected cryptocurrency and time interval
 ```
-localhost:5000/crypto/<symbol>/<interval>/ # localhost:5000/crypto/BTCUSDT/1d/ 
+localhost:5000/crypto/<symbol>/<interval>/ # e.g. localhost:5000/crypto/BTCUSDT/1d/ 
 0	
   0	6935 # Open 
   1	7150.46 # High
@@ -48,4 +48,27 @@ localhost:5000/crypto/<symbol>/<interval>/ # localhost:5000/crypto/BTCUSDT/1d/
   3	6285
   4	59550.536319
 ...
+```
+### Predict next price for selected cryptocurrency and time interval
+```
+localhost:5000/crypto/<symbol>/<interval>/predict/ # e.g. localhost:5000/crypto/BTCUSDT/1d/predict/ 
+0	57797.35 # Open
+1	57911.02 # High
+2	56035.25 # Low
+3	56762.73 # Close
+4	57126.5875 # Mean
+5	56563.34535026978 # Predicted next price
+6	"Stay" # Recommended move
+```
+### Simulate trading for all predicted "Buy" moves in 1000 records
+```
+localhost:5000/crypto/<symbol>/<interval>/<float:money>/simulation/ # e.g. localhost:5000/crypto/BTCUSDT/1d/100.0/simulation/ 
+0	0 # Ignore
+1	543 # "Buy" count 
+2	6.7323972146730275 # Bought crypto
+3	54300 # Money spend
+4	57118.945 # Current crypto price
+5	384547.43 # Fortune
+6	330247.43 # Profit
+7	608.19 # Rate of return
 ```
