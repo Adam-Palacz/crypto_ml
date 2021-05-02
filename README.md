@@ -8,7 +8,8 @@ Researh for this application is presented in Jupyter-Nootebook file crypto_ml.ip
 # API 
 
 Show all cryptocurrency pairs
-''' localhost:5000/crypto/ 
+''' 
+localhost:5000/crypto/ 
 0	
   0	"ETHBTC" # price
   1	0.051335 # symbol
@@ -19,7 +20,8 @@ Show all cryptocurrency pairs
 '''
 
 Show 1000 records for selected cryptocurrency and time interval
-''' localhost:5000/crypto/<symbol>/<interval>/ # localhost:5000/crypto/BTCUSDT/1d/ 
+''' 
+localhost:5000/crypto/<symbol>/<interval>/ # localhost:5000/crypto/BTCUSDT/1d/ 
 0	
   0	6935 # Open 
   1	7150.46 # High
