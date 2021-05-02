@@ -12,12 +12,12 @@ App is using Binance Exchange API. All functions are availbe on https://github.c
 symbol - cryptocurrency pair symbol (string)\
 price - cryptocurrency price e.g. ETHBTC is ETH price in BTC (float)\
 interval - time interval beetween prices (string) :\
-  minutes -> 1m, 3m, 5m, 15m, 30m\
-  hours -> 1h, 2h, 4h, 6h, 8h, 12h\
-  days -> 1d, 3d\
-  weeks -> 1w\
-  months -> 1M\
-money - buy value for trading simulation (float)\
+  * minutes -> 1m, 3m, 5m, 15m, 30m\
+  * hours -> 1h, 2h, 4h, 6h, 8h, 12h\
+  * days -> 1d, 3d\
+  * weeks -> 1w\
+  * months -> 1M\
+money - buy value for trading simulation (float)
 
 ### Show all cryptocurrency pairs
 ```
