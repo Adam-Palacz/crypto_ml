@@ -45,7 +45,7 @@ def close_model_predict(symbol, interval):
 
 def trade_move(function, symbol, interval):
     predicted = function(symbol, interval)
-    predicted['move'] = np.where(predicted['predicted_price'].shift(1) < predicted['predicted_price'], "Buy", "Stay")
+    predicted['move'] = np.where(predicted['mean'] < predicted['predicted_price'], "Buy", "Stay")
     return predicted
 
 
@@ -76,7 +76,5 @@ def mean_model_predict(symbol, interval):
     model = mean_model_train(symbol, interval)
     mean_predict['predicted_price'] = model.predict(mean_predict[['Open', 'High', 'Low', 'Close']])
     return mean_predict
-
-
 
 

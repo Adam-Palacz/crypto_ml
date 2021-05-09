@@ -1,6 +1,6 @@
 from binance_api import download_current_prices, prepare_data
 from predict_model import trade_move, mean_model_predict
-from trading_simulation import only_buys_simulator, buys_sales_simulator
+from trading_simulation import only_buys_simulator
 import sqlite3
 from sqlite3 import OperationalError
 
@@ -43,7 +43,7 @@ def create_historical_prices_table(symbol, interval):
 
 
 def save_historical_prices(symbol, interval):
-    historical_prices_df = prepare_data(symbol, interval)
+    historical_prices_df = prepare_data(symbol, interval)[::-1]
     create_historical_prices_table(symbol, interval)
     conn = sqlite3.connect('db.sqlite')
     result = historical_prices_df.to_sql(f'{symbol}_{interval}_prices', conn, if_exists='replace', index=False)

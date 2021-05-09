@@ -32,4 +32,3 @@ def download_current_prices():
 
 
 
-# print(prepare_data('BTCUSDT', '1h'))
