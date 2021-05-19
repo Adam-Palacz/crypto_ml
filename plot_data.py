@@ -4,6 +4,12 @@ import plotly.offline as py
 
 
 def print_linear(symbol, interval):
+    """Plot line chart selected crypto and time interval from Binance API
+
+    :param str symbol: crypto pair (e.g. BTCUSDT)
+    :param str interval: time interval (e.g 1d, 1h, 1m.. more in README file)
+    :return: html file with line chart created by plotly library
+    """
     df = prepare_data(symbol, interval)
     trace = go.Ohlc(
         x=df.index[:],
@@ -22,5 +28,5 @@ def print_linear(symbol, interval):
         'yaxis': {'title': 'Price'}
     }
     fig = dict(data=data, layout=layout)
-    py.plot(fig, filename=f'templates/{symbol}_{interval}', auto_open=False)
-
+    plot = py.plot(fig, filename=f'templates/{symbol}_{interval}.html', auto_open=False)
+    return plot
