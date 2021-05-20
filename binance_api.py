@@ -7,8 +7,11 @@ api_base_endpoint = "https://api.binance.com"
 def download_historical_prices(symbol, interval):
     api_historical_prices = api_base_endpoint + f"/api/v3/klines?limit=1000&symbol={symbol}&interval={interval}"
     r_historical_prices = requests.get(api_historical_prices)
-    historical_prices_df = pd.read_json(r_historical_prices.text)
-    return historical_prices_df
+    try:
+        historical_prices_df = pd.read_json(r_historical_prices.text)
+        return historical_prices_df
+    except ValueError:
+        return None
 
 
 def prepare_data(symbol, interval):
@@ -28,7 +31,4 @@ def download_current_prices():
     r_current_prices = requests.get(api_current_prices)
     current_prices_df = pd.read_json(r_current_prices.text)
     return current_prices_df
-
-
-
 
