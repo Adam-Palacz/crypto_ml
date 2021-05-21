@@ -1,6 +1,7 @@
+import joblib
 from sklearn.linear_model import LinearRegression
 import numpy as np
-from binance_api import prepare_data
+from binance_api import prepare_data, current_time
 
 
 def close_model_prepare(symbol, interval):
@@ -77,4 +78,10 @@ def mean_model_predict(symbol, interval):
     mean_predict['predicted_price'] = model.predict(mean_predict[['Open', 'High', 'Low', 'Close']])
     return mean_predict
 
+
+def save_model(model_train_function, symbol, interval):
+    model = model_train_function(symbol, interval)
+    time_now = current_time()
+    joblib.dump(model, f'data/mean_model_lr_{time_now}.joblib')
+    return "Model saved"
 
