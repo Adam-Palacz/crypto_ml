@@ -1,5 +1,6 @@
-import requests
+import datetime
 import pandas as pd
+import requests
 
 api_base_endpoint = "https://api.binance.com"
 
@@ -32,3 +33,22 @@ def download_current_prices():
     current_prices_df = pd.read_json(r_current_prices.text)
     return current_prices_df
 
+
+def current_time():
+    result = datetime.datetime.now().strftime("%Y_%b_%d_%H:%M")
+    return result
+
+
+def save_current_prices():
+    time_now = current_time()
+    download_current_prices().to_csv(f'data/crypto_prices_{time_now}')
+    return "Data saved"
+
+
+def save_historical_prices(symbol, interval):
+    if download_historical_prices(symbol, interval) is None:
+        return "Wrong data"
+    data = prepare_data(symbol, interval)
+    time_now = current_time()
+    data.to_csv(f'data/{symbol}_{interval}_prices_{time_now}')
+    return "Data saved"
