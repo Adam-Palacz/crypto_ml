@@ -1,8 +1,9 @@
-import werkzeug.exceptions
-from flask import Flask, jsonify, render_template
+from binance_api import download_historical_prices
 from data_to_sql import print_historical_prices, print_current_prices, print_predict_prices, print_buys_simulator
 from plot_data import print_linear
-from binance_api import download_historical_prices
+from portfolio import print_portfolio
+import werkzeug.exceptions
+from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -32,7 +33,7 @@ def get_crypto_history(symbol, interval):
 
 @app.errorhandler(werkzeug.exceptions.BadRequest)
 @app.route('/crypto/<symbol>/<interval>/plot/')
-def print_crypto_history2(symbol, interval):
+def print_crypto_history(symbol, interval):
     """Get line chart selected crypto and time interval from Binance API
 
     :param str symbol: crypto pair (e.g. BTCUSDT)
@@ -74,6 +75,16 @@ def get_buys_simulation(symbol, interval, money):
     elif not isinstance(money, float):
         return 'money is not float type (e.g. 100.0)', 400
     return jsonify(print_buys_simulator(symbol, interval, money))
+
+
+@app.route('/crypto/portfolio/<portfolio_name>/', methods=['GET'])
+def get_portfolio(portfolio_name):
+    """Get your crypto portfolio
+
+    :param str portfolio_name: name of the sql table with portfolio
+    :return: Get data from table in json type
+    """
+    return jsonify(print_portfolio(portfolio_name))
 
 
 if __name__ == '__main__':
