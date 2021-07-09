@@ -3,7 +3,9 @@ Application using machine learning to predict cryptocurrency prices from Binance
 App also allow to simulate trading based on predicted moves.\
 Application functions are made available in API form using the Flask library
 
-Research for this application is presented in Jupyter-Nootebook file crypto_ml.ipynb
+Research for this application is presented in Jupyter-Notebook file crypto_ml.ipynb
+
+* NOTE: The latest changes are in the jupyter notebook and have not yet been applied to the main application
 
 # API 
 App is using Binance Exchange API. All functions are availbe on https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md, but in this application we use only two
